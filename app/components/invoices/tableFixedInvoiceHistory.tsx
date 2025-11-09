@@ -1,0 +1,62 @@
+import { Grid, GridItem } from "@/components/ui/grid";
+import { Text } from "@/components/ui/text";
+import { Expense } from "../../constants/types";
+import HeaderTableFixedInvoice from "./headerTableFixedInvoice";
+
+interface TableFixedInvoiceHistoryProps {
+    expenses: Expense[];
+}
+export default function TableFixedInvoiceHistory({
+    expenses,
+}: TableFixedInvoiceHistoryProps) {
+    if (expenses.length === 0) {
+        return null;
+    }
+    return (
+        <>
+            <HeaderTableFixedInvoice />
+            {expenses.map((expense) => (
+                <Grid
+                    key={expense.name}
+                    className="gap-2 p-2 mx-1 border-b border-gray-200"
+                    _extra={{ className: "grid-cols-12" }}
+                >
+                    <GridItem
+                        className="justify-center"
+                        _extra={{ className: "col-span-3" }}
+                    >
+                        <Text size="md" className="font-medium">
+                            {expense.name}
+                        </Text>
+                    </GridItem>
+                    <GridItem
+                        className="justify-center"
+                        _extra={{ className: "col-span-4" }}
+                    >
+                        <Text size="md" className="font-normal text-right">
+                            {expense.price.toLocaleString()}
+                        </Text>
+                    </GridItem>
+                    <GridItem
+                        className="justify-center"
+                        _extra={{ className: "col-span-1" }}
+                    >
+                        <Text size="md" className="font-normal text-center">
+                            {expense.quantity}
+                        </Text>
+                    </GridItem>
+                    <GridItem
+                        className="justify-center"
+                        _extra={{ className: "col-span-4" }}
+                    >
+                        <Text size="md" className="font-medium text-right">
+                            {(
+                                expense.price * expense.quantity
+                            ).toLocaleString()}
+                        </Text>
+                    </GridItem>
+                </Grid>
+            ))}
+        </>
+    );
+}

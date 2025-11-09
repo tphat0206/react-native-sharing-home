@@ -1,21 +1,35 @@
-import { Stack } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
-import 'react-native-reanimated';
+import { Stack } from "expo-router";
+import { StatusBar } from "expo-status-bar";
+import "react-native-reanimated";
 
-import { GluestackUIProvider } from '@/components/ui/gluestack-ui-provider';
-import '@/global.css';
+import { GluestackUIProvider } from "@/components/ui/gluestack-ui-provider";
+import "@/global.css";
+import Routes from "./constants/Routes";
 
 export default function RootLayout() {
-  return (
-    <GluestackUIProvider mode="light">
-      <Stack screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="index" />
-        <Stack.Screen name="welcome" />
-        <Stack.Screen name="role-selection" />
-        <Stack.Screen name="login" />
-        <Stack.Screen name="signup" />
-      </Stack>
-      <StatusBar style="auto" />
-    </GluestackUIProvider>
-  );
+    return (
+        <GluestackUIProvider mode="light">
+            <Stack
+                screenOptions={{
+                    headerShown: false,
+                    animation: "none",
+                }}
+            >
+                <Stack.Screen name="index" />
+                <Stack.Screen name={Routes.ROLE_SELECTION} />
+                <Stack.Screen name={Routes.LOGIN()} />
+                <Stack.Screen name={Routes.SIGNUP} />
+                <Stack.Screen name={Routes.PROFILE} />
+                <Stack.Screen name={Routes.NOTIFICATIONS} />
+                {/* Home Master Screens */}
+                <Stack.Screen name={Routes.HOME_MASTER_DASHBOARD} />
+                <Stack.Screen name={Routes.HOME_MASTER_ROOMS} />
+                <Stack.Screen name={Routes.HOME_MASTER_ROOM_DETAIL} />
+                <Stack.Screen name={Routes.HOME_MASTER_INVOICE_HISTORY} />
+                {/* Room Master Screens */}
+                <Stack.Screen name={Routes.ROOM_MEMBER_DASHBOARD} />
+            </Stack>
+            <StatusBar style="auto" />
+        </GluestackUIProvider>
+    );
 }
