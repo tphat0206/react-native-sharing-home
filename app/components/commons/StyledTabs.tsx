@@ -22,7 +22,9 @@ export default function StyledTabs({ tabs, currentTabId }: StyledTabsProps) {
             {tabs.map((tab: Tab) => (
                 <GridItem
                     key={tab.id}
-                    _extra={{ className: "col-span-4" }}
+                    _extra={{
+                        className: `col-span-${String(12 / tabs.length)}`,
+                    }}
                     className={
                         currentTabId === tab.id
                             ? "bg-white p-1 rounded-full"

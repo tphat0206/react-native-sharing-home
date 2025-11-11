@@ -3,83 +3,18 @@ import DrawerCreateMonthlyInvoice from "@/app/components/invoices/drawerCreateMo
 import FixedCosts from "@/app/components/invoices/fixedCosts";
 import MonthlyCosts from "@/app/components/invoices/monthlyCosts";
 import { FixedInvoice, MonthlyExpense } from "@/app/constants/types";
+import { dummy_fixed_costs, dummy_monthly_costs } from "@/utils/dummy";
 import React, { useState } from "react";
 import { View } from "react-native";
 
-export default function InvoiceTab() {
+export default function CurrentInvoiceTab() {
     const [showCreateInvoiceDrawer, setShowCreateInvoiceDrawer] =
         useState(false);
-    const [fixedCosts, setFixedCosts] = useState<FixedInvoice>({
-        month: "November 2025",
-        expenses: [
-            {
-                name: "Rent",
-                price: 4550000,
-                quantity: 1,
-            },
-            {
-                name: "Electricity",
-                price: 4000,
-                quantity: 120,
-            },
-            {
-                name: "Wifi",
-                price: 150000,
-                quantity: 1,
-            },
-            {
-                name: "Water",
-                price: 3000,
-                quantity: 120,
-            },
-            {
-                name: "Rubbish",
-                price: 3000,
-                quantity: 120,
-            },
-        ],
-    });
+    const [fixedCosts, setFixedCosts] =
+        useState<FixedInvoice>(dummy_fixed_costs);
 
-    const [monthlyCosts, setMonthlyCosts] = useState<MonthlyExpense[]>([
-        {
-            name: "Washing Powder",
-            date: new Date(),
-            amount: 260000,
-            sharing: [
-                {
-                    user: "Member 4",
-                    is_confirmed: true,
-                },
-                {
-                    user: "Member 3",
-                    is_confirmed: true,
-                },
-                {
-                    user: "Member 1",
-                    is_confirmed: false,
-                },
-            ],
-            payer: "Member 1",
-            is_confirmed: false,
-        },
-        {
-            name: "Market",
-            date: new Date(),
-            amount: 120000,
-            sharing: [
-                {
-                    user: "Member 1",
-                    is_confirmed: true,
-                },
-                {
-                    user: "Member 4",
-                    is_confirmed: true,
-                },
-            ],
-            payer: "Member 2",
-            is_confirmed: true,
-        },
-    ]);
+    const [monthlyCosts, setMonthlyCosts] =
+        useState<MonthlyExpense[]>(dummy_monthly_costs);
 
     const [selectedDate, setSelectedDate] = useState<Date | null>(null);
     const [newExpenseName, setNewExpenseName] = useState("");

@@ -14,9 +14,16 @@ export default function RoomViewSelectionScreen() {
 
     const handleManageRoom = () => {
         console.log("Manage room");
+        router.push({
+            pathname: Routes.ROOM_MASTER_ROOM_DETAIL_MEMBERS as any,
+            params: {
+                roomId: roomId,
+                roomName: roomName,
+            },
+        });
     };
 
-    const handleViewAsMember = (roomId: string, roomName?: string) => {
+    const handleViewAsMember = () => {
         console.log("View as Member");
         router.push({
             pathname: Routes.ROOM_MEMBER_ROOM_DETAIL_MEMBERS as any,
@@ -34,14 +41,11 @@ export default function RoomViewSelectionScreen() {
                 showNotificationIcon={true}
             >
                 <View className="flex-1 p-4 mt-4 gap-4">
-                    <Button>
+                    <Button onPress={handleManageRoom}>
                         <ButtonText>Manage room</ButtonText>
                         <ButtonIcon as={SettingsIcon} className="mr-2" />
                     </Button>
-                    <Button
-                        variant="solid"
-                        onPress={() => handleViewAsMember(roomId, roomName)}
-                    >
+                    <Button onPress={handleViewAsMember}>
                         <ButtonText>View as Member</ButtonText>
                         <ButtonIcon as={EyeIcon} className="ml-2" />
                     </Button>

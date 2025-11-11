@@ -23,11 +23,13 @@ export default function RootLayout() {
                 <Stack.Screen name={Routes.NOTIFICATIONS} />
                 {/* Home Master Screens */}
                 <Stack.Screen name={Routes.HOME_MASTER_DASHBOARD} />
-                <Stack.Screen name={Routes.HOME_MASTER_ROOMS} />
                 <Stack.Screen name={Routes.HOME_MASTER_ROOM_DETAIL} />
                 <Stack.Screen name={Routes.HOME_MASTER_INVOICE_HISTORY} />
                 {/* Room Master Screens */}
                 <Stack.Screen name={Routes.ROOM_MEMBER_DASHBOARD} />
+                <Stack.Screen name={Routes.ROOM_VIEW_SELECTION} />
+                {/* Room Member Screen */}
+
             </Stack>
             <StatusBar style="auto" />
         </GluestackUIProvider>

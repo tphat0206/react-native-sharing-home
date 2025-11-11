@@ -1,3 +1,4 @@
+import { Grid, GridItem } from "@/components/ui/grid";
 import { HStack } from "@/components/ui/hstack";
 import {
     CheckIcon,
@@ -8,7 +9,7 @@ import {
 import { Text } from "@/components/ui/text";
 import { useState } from "react";
 import { Pressable, View } from "react-native";
-import { Expense } from "../../constants/types";
+import { FixedInvoice } from "../../constants/types";
 import StyledBadge from "../commons/StyledBadge";
 import TableFixedInvoiceHistory from "./tableFixedInvoiceHistory";
 
@@ -27,17 +28,37 @@ export default function InvoiceHistoryCard({
     invoice,
     onShowExpense,
 }: InvoiceHistoryCardProps) {
-    const [expense, setExpense] = useState<Expense[]>([]);
+    const [fixedInvoice, setFixedInvoice] = useState<FixedInvoice>();
 
     const handleShowExpense = () => {
         onShowExpense(invoice.id);
-        setExpense([
-            { name: "Electricity", price: 10000000, quantity: 18 },
-            { name: "Water", price: 100, quantity: 1 },
-            { name: "Internet", price: 100, quantity: 1 },
-            { name: "Rent", price: 100, quantity: 1 },
-            { name: "Other", price: 100, quantity: 1 },
-        ]);
+        setFixedInvoice({
+            date: new Date(),
+            totalAmount: 4550000,
+            eachMemberAmount: 1137500,
+            expenses: [
+                {
+                    name: "Rent",
+                    price: 4550000,
+                    quantity: 1,
+                },
+                {
+                    name: "Electricity",
+                    price: 4000,
+                    quantity: 120,
+                },
+                {
+                    name: "Wifi",
+                    price: 150000,
+                    quantity: 1,
+                },
+                {
+                    name: "Water",
+                    price: 3000,
+                    quantity: 120,
+                },
+            ],
+        });
     };
 
     const mapStatusToIcon = (status: string) => {
@@ -86,7 +107,32 @@ export default function InvoiceHistoryCard({
                 </Pressable>
             </HStack>
             {invoice.is_show_expense ? (
-                <TableFixedInvoiceHistory expenses={expense} />
+                <>
+                    <TableFixedInvoiceHistory
+                        expenses={fixedInvoice?.expenses ?? []}
+                    />
+                    <Grid
+                        className="gap-2 p-2 border-b border-gray-200 bg-gray-100"
+                        _extra={{ className: "grid-cols-12" }}
+                    >
+                        <GridItem
+                            className="justify-center"
+                            _extra={{ className: "col-span-6" }}
+                        >
+                            <Text size="md" className="font-medium">
+                                Total
+                            </Text>
+                        </GridItem>
+                        <GridItem
+                            className="justify-center"
+                            _extra={{ className: "col-span-6" }}
+                        >
+                            <Text size="md" className="font-normal text-right">
+                                {fixedInvoice?.totalAmount.toLocaleString()}
+                            </Text>
+                        </GridItem>
+                    </Grid>
+                </>
             ) : null}
         </View>
     );

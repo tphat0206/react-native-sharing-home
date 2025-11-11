@@ -1,6 +1,7 @@
 import { FixedInvoice } from "@/app/constants/types";
 import { Grid, GridItem } from "@/components/ui/grid";
 import { Heading, Text } from "@/components/ui/text";
+import { formatDate } from "@/utils/format_date";
 import { useMemo } from "react";
 import { View } from "react-native";
 
@@ -23,7 +24,7 @@ export default function FixedCosts({
     return (
         <View className="bg-gray-200 p-4 rounded-2xl my-2">
             <Heading size="md">Fixed Costs</Heading>
-            <Text>{fixedCosts.month}</Text>
+            <Text>{formatDate(fixedCosts.date)}</Text>
             <Grid className="gap-2 my-4" _extra={{ className: "grid-cols-8" }}>
                 {fixedCosts.expenses.map((expense, index) => (
                     <GridItem

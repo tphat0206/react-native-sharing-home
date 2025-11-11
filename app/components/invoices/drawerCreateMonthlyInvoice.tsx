@@ -10,6 +10,7 @@ import StyledButton from "../commons/StyledButton";
 import StyledCheckBox from "../commons/StyledCheckBox";
 import StyledDatePicker from "../commons/StyledDatePicker";
 import StyledInput from "../commons/StyledInput";
+import { Text } from "@/components/ui/text";
 
 interface DrawerCreateMonthlyInvoiceProps {
     isOpen: boolean;
@@ -83,6 +84,9 @@ export default function DrawerCreateMonthlyInvoice({
                                     onChangeAmount(Number(value))
                                 }
                             />
+                        </View>
+                        <View>
+                                <Text>Share with:</Text>
                         </View>
                         <View>
                             {members.map((member, index) => (

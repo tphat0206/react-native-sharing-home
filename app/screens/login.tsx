@@ -17,22 +17,22 @@ export default function LoginScreen() {
 
     const handleLogin = () => {
         console.log("Login:", { phoneNumber, password, role });
-        router.dismissAll()
+        router.dismissAll();
         switch (password) {
             case "home_master":
                 storeData("userRole", "home_master");
-                router.replace(Routes.HOME_MASTER_DASHBOARD as any)
-                return
+                router.replace(Routes.HOME_MASTER_DASHBOARD as any);
+                return;
             case "room_master":
                 storeData("userRole", "room_master");
-                router.replace(Routes.ROOM_MEMBER_DASHBOARD as any)
-                return
+                router.replace(Routes.ROOM_MEMBER_DASHBOARD as any);
+                return;
             case "room_member":
-                storeData("userRole", "room_member")
-                router.replace(Routes.ROOM_MEMBER_DASHBOARD as any)
-                return
+                storeData("userRole", "room_member");
+                router.replace(Routes.ROOM_MEMBER_DASHBOARD as any);
+                return;
             default:
-                console.warn("Invalid password for role selection")
+                console.warn("Invalid password for role selection");
         }
     };
 

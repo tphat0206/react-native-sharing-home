@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "react-native-sharing-home",
-    "slug": "react-native-sharing-home",
+    "name": "sharing-home",
+    "slug": "sharing-home",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/home-icon.png",
@@ -9,7 +9,8 @@
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.anonymous.reactnativesharinghome"
     },
     "android": {
       "adaptiveIcon": {

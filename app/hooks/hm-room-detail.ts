@@ -1,4 +1,6 @@
+import { dummy_member_list } from "@/utils/dummy";
 import { useMemo, useState } from "react";
+import { ROLE } from "../constants/enum";
 import { Expense, Member } from "../constants/types";
 
 const useHMRoomDetail = () => {
@@ -13,29 +15,7 @@ const useHMRoomDetail = () => {
         { name: "Water", price: 100, quantity: 1 },
     ]);
     const [expenses, setExpenses] = useState<Expense[]>([]);
-    const [members, setMembers] = useState<Member[]>([
-        {
-            id: 1,
-            avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-            name: "John Doe",
-            phoneNumber: "01234567891",
-            role: "Room master",
-        },
-        {
-            id: 2,
-            avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-            name: "Jane Doe",
-            phoneNumber: "01234567892",
-            role: "Member",
-        },
-        {
-            id: 3,
-            avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-            name: "Jim Beam",
-            phoneNumber: "01234567893",
-            role: "Member",
-        },
-    ]);
+    const [members, setMembers] = useState<Member[]>(dummy_member_list);
 
     // const [members, setMembers] = useState<Member[]>([]);
 
@@ -61,7 +41,7 @@ const useHMRoomDetail = () => {
                 avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
                 name: newPhoneNumber,
                 phoneNumber: newPhoneNumber,
-                role: "Room master",
+                role: ROLE.ROOM_MEMBER,
             },
         ]);
         setNewPhoneNumber("");

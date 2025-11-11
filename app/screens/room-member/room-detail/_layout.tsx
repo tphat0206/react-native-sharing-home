@@ -25,7 +25,7 @@ const tabs: Tab[] = [
     },
 ];
 
-export default function RoomDetail() {
+export default function RoomMemberRoomDetail() {
     const pathname = usePathname();
     const { roomId, roomName } = useLocalSearchParams<{
         roomId: string;
@@ -34,15 +34,13 @@ export default function RoomDetail() {
 
     const [summary, setSummary] = useState({
         spent: 1_500_000,
-        budget_cost: 1_000_000,
+        budgeted_cost: 1_000_000,
         actual_cost: 500_000,
     });
-    console.log("pathname", pathname);
     const currentTabId = useMemo(
         () => tabs.find((tab) => pathname.includes(tab.path))?.id ?? 1,
         [pathname]
     );
-    console.log("currentTabId", currentTabId);
     return (
         <>
             <DrawerLayout title={"Dashboard"} showNotificationIcon={true}>
@@ -55,7 +53,7 @@ export default function RoomDetail() {
                             },
                             {
                                 title: "Budgeted Costs",
-                                value: summary.budget_cost.toLocaleString(),
+                                value: summary.budgeted_cost.toLocaleString(),
                             },
                             {
                                 title: "Actual Costs",
@@ -63,12 +61,9 @@ export default function RoomDetail() {
                             },
                         ]}
                     />
-                    <StyledTabs
-                        tabs={tabs}
-                        currentTabId={currentTabId}
-                    />
+                    <StyledTabs tabs={tabs} currentTabId={currentTabId} />
                     <Slot />
-                    <View className="h-20"/>
+                    <View className="h-20" />
                 </ScrollView>
             </DrawerLayout>
         </>

@@ -36,15 +36,15 @@ export default function MonthlyCostsItem({
             </HStack>
             <HStack className="justify-between my-1">
                 <Text>{`Date: ${formatDate(monthlyExpense.date)}`}</Text>
-                <Text>{`Share: ${confirmationCount}/ ${monthlyExpense.sharing.length}`}</Text>
+                <Text>{`Share: ${confirmationCount} / ${monthlyExpense.sharing.length}`}</Text>
             </HStack>
             <Text className="font-medium">{`Payer: ${monthlyExpense.payer} ${
-                monthlyExpense.payer === memberName ? "(Me)" : ""
+                monthlyExpense.payer.name === memberName ? "(Me)" : ""
             }`}</Text>
             <HStack className="justify-between">
                 <View className="mt-2">
-                    {monthlyExpense.sharing.map((sharing) => (
-                        <HStack key={sharing.user} className="items-center">
+                    {monthlyExpense.sharing.map((sharing, index) => (
+                        <HStack key={index} className="items-center">
                             {sharing.is_confirmed ? (
                                 <Icon
                                     as={CheckIcon}
@@ -58,8 +58,8 @@ export default function MonthlyCostsItem({
                                     className="text-yellow-500"
                                 />
                             )}
-                            <Text className="ml-2">{`${sharing.user} ${
-                                sharing.user === memberName ? "(Me)" : ""
+                            <Text className="ml-2">{`${sharing.member.name} ${
+                                sharing.member.name === memberName ? "(Me)" : ""
                             }`}</Text>
                         </HStack>
                     ))}

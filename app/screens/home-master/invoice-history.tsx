@@ -39,7 +39,7 @@ export default function InvoiceHistoryScreen() {
         setInvoiceHistory(
             invoiceHistory.map((invoice) =>
                 invoice.id === invoiceId
-                    ? { ...invoice, is_show_expense: true }
+                    ? { ...invoice, is_show_expense: !invoice.is_show_expense }
                     : { ...invoice, is_show_expense: false }
             )
         );

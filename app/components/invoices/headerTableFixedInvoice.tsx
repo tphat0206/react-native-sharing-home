@@ -5,7 +5,7 @@ export default function HeaderTableFixedInvoice() {
     return (
         <Grid
             key={-1}
-            className="gap-2 p-2 mx-1 border-b border-gray-200 bg-gray-100"
+            className="gap-2 p-2 border-b border-gray-200 bg-gray-100"
             _extra={{ className: "grid-cols-12" }}
         >
             <GridItem

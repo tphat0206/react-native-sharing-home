@@ -6,6 +6,7 @@ import HeaderTableFixedInvoice from "./headerTableFixedInvoice";
 interface TableFixedInvoiceHistoryProps {
     expenses: Expense[];
 }
+
 export default function TableFixedInvoiceHistory({
     expenses,
 }: TableFixedInvoiceHistoryProps) {
@@ -18,7 +19,7 @@ export default function TableFixedInvoiceHistory({
             {expenses.map((expense) => (
                 <Grid
                     key={expense.name}
-                    className="gap-2 p-2 mx-1 border-b border-gray-200"
+                    className="gap-2 py-2 border-b border-gray-200 bg-white"
                     _extra={{ className: "grid-cols-12" }}
                 >
                     <GridItem
@@ -41,7 +42,7 @@ export default function TableFixedInvoiceHistory({
                         className="justify-center"
                         _extra={{ className: "col-span-1" }}
                     >
-                        <Text size="md" className="font-normal text-center">
+                        <Text size="sm" className="font-normal text-center">
                             {expense.quantity}
                         </Text>
                     </GridItem>
